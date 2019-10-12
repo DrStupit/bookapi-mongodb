@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
+namespace BookApi.Models
+{
+    public class JobPost
+    {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        [BsonElement("Title")]
+        public string Title { get; set; }
+        public string Description { get; set; }
+
+        public string Location { get; set; }
+        public DateTime Date { get; set; }
+
+    }
+}
