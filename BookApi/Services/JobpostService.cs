@@ -9,7 +9,7 @@ namespace BookApi.Services
     {
         private readonly IMongoCollection<JobPost> _jobPost;
 
-        public JobpostService(IJobPostDatabseSettings settings)
+        public JobpostService(IBookstoreDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
