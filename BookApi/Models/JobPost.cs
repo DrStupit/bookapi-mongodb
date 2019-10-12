@@ -14,10 +14,18 @@ namespace BookApi.Models
         public string Id { get; set; }
         [BsonElement("Title")]
         public string Title { get; set; }
-        public string Description { get; set; }
-
+        public Description Description { get; set; }
+        public string Company { get; set; }
         public string Location { get; set; }
         public DateTime Date { get; set; }
 
+    }
+
+    public class Description
+    {
+        public string Overview { get; set; }
+        public string Requirements { get; set; }
+        public string Responsibilities { get; set; }
+        public string Contact { get; set; }
     }
 }
