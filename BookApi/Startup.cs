@@ -36,6 +36,17 @@ namespace BookApi
             services.AddSingleton<BookService>();
             services.AddSingleton<JobpostService>();
             services.AddControllers();
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
+
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.WithOrigins("https://localhost:44342"));
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
@@ -45,6 +56,7 @@ namespace BookApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             app.UseSwagger();
             if (env.IsDevelopment())
             {
@@ -62,6 +74,11 @@ namespace BookApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(options => options.AllowAnyOrigin());
+
+            app.UseCors(options => options.WithOrigins("https://localhost:44342"));
+
 
             app.UseEndpoints(endpoints =>
             {

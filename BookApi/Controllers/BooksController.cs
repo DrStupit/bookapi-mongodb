@@ -7,6 +7,7 @@ namespace BooksApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class BooksController : ControllerBase
     {
         private readonly BookService _bookService;

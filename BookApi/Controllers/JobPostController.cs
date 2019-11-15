@@ -1,5 +1,6 @@
 ﻿using BookApi.Models;
 using BookApi.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ namespace BooksApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class JobPostController : ControllerBase
     {
         private readonly JobpostService _jobPostService;
@@ -34,6 +36,7 @@ namespace BooksApi.Controllers
         }
 
         [HttpPost]
+        [EnableCors("AllowOrigin")]
         public ActionResult<JobPost> Create(JobPost job)
         {
             _jobPostService.Create(job);
@@ -42,6 +45,7 @@ namespace BooksApi.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
+        [EnableCors("AllowOrigin")]
         public IActionResult Update(string id, JobPost jobPost)
         {
             var job = _jobPostService.Get(id);
@@ -57,6 +61,7 @@ namespace BooksApi.Controllers
         }
 
         [HttpDelete("{id:length(24)}")]
+        [EnableCors("AllowOrigin")]
         public IActionResult Delete(string id)
         {
             var job = _jobPostService.Get(id);
